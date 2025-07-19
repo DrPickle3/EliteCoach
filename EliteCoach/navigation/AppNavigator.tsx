@@ -9,7 +9,6 @@ import WorkoutsScreen from '../screens/WorkoutsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
