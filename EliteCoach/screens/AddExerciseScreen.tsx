@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import WhiteText from '../components/customTexts';
 
-export default function EnterWorkoutScreen() {
+export default function AddExerciseScreen() {
   const { startDraft, clearDraft } = useWorkoutDraft();
 
   useEffect(() => {
@@ -21,29 +21,14 @@ export default function EnterWorkoutScreen() {
 
   type NavigationProp = NativeStackNavigationProp<
     WorkoutsStackParamList,
-    'EnterWorkoutScreen'
+    'AddExerciseScreen'
   >;
 
   const navigation = useNavigation<NavigationProp>();
 
-    useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Button
-          title="Finish Workout"
-          onPress={() => {
-            clearDraft();
-            navigation.navigate('WorkoutsScreen');
-          }}
-        />
-      ),
-    });
-  }, [navigation]);
-
   return (
     <View>
-      <WhiteText>Log your workout here</WhiteText>
-      <Button title="Add Exercise" onPress={() => navigation.navigate('AddExerciseScreen')} />
+      <WhiteText>Find and add your exercise</WhiteText>
       <Button title="Back" onPress={() => navigation.goBack()} />
     </View>
   );

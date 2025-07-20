@@ -3,9 +3,39 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { useWorkoutDraft } from '../context/WorkoutContext';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { WorkoutDraftProvider } from '../context/WorkoutContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import EnterWorkoutScreen from '../screens/EnterWorkoutScreen';
+import AddExerciseScreen from '../screens/AddExerciseScreen';
 import WhiteText from '../components/customTexts';
 import GreenButton from '../components/customButtons';
+
+export function WorkoutsStack() {
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <WorkoutDraftProvider>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="WorkoutsScreen"
+          component={WorkoutsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EnterWorkoutScreen"
+          component={EnterWorkoutScreen}
+          options={{ title: "Current Workout" }}
+        />
+        <Stack.Screen
+          name="AddExerciseScreen"
+          component={AddExerciseScreen}
+          options={{ title: "Add Exercise" }}
+        />
+      </Stack.Navigator>
+    </WorkoutDraftProvider>
+  );
+}
 
 export default function WorkoutsScreen() {
   const { hasDraft } = useWorkoutDraft();
@@ -19,7 +49,7 @@ export default function WorkoutsScreen() {
 
   type NavigationProp = NativeStackNavigationProp<
     WorkoutsStackParamList,
-    'EnterWorkoutScreen'
+    'WorkoutsScreen'
   >;
 
   const navigation = useNavigation<NavigationProp>();

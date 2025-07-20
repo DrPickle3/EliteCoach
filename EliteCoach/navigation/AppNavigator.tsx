@@ -4,18 +4,13 @@ import {
   DefaultTheme,
   DarkTheme,
 } from '@react-navigation/native';
-import { WorkoutDraftProvider } from '../context/WorkoutContext';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GreenAppTheme } from '../themes/greenTheme';
+import { WorkoutsStack } from '../screens/WorkoutsScreen';
 
 import HomeScreen from '../screens/HomeScreen';
-import WorkoutsScreen from '../screens/WorkoutsScreen';
-import EnterWorkoutScreen from '../screens/EnterWorkoutScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
@@ -27,25 +22,6 @@ export default function AppNavigator() {
       ...GreenAppTheme.colors,
     },
   };
-
-  function WorkoutsStack() {
-    return (
-      <WorkoutDraftProvider>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="WorkoutsScreen"
-            component={WorkoutsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="EnterWorkoutScreen"
-            component={EnterWorkoutScreen}
-            options={{ title: "Today's Workout" }}
-          />
-        </Stack.Navigator>
-      </WorkoutDraftProvider>
-    );
-  }
 
   return (
     <NavigationContainer theme={MyDarkTheme}>
