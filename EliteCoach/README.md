@@ -3,7 +3,7 @@
 ## terminals
 
 You have to have the virtual Android Emulator opened before starting the terminals.
-Open Android Studio -> More actions -> Virtual something
+Open Android Studio -> More actions -> Virtual Device Manager
 
 First terminal in EliteCoach/EliteCoach/android for the build
 
